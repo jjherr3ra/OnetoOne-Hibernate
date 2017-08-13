@@ -9,7 +9,6 @@ package una.ac.cr.OnetoOne.model;
  *
  * @author MACJuanJara
 " */
-import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,9 +23,10 @@ import javax.persistence.Table;
 public class PassportDetail {
     
     @Id
-    @Column(name = "id")
+    @Column
     @GeneratedValue(strategy = IDENTITY)
     private long id;
+    
     @Column(name = "passportno")
     private String passportno;
 
@@ -36,8 +36,7 @@ public class PassportDetail {
     }
 
     public PassportDetail() {
-        this.id = 0;
-        this.passportno = "";
+       
     }
  
     
@@ -56,6 +55,10 @@ public class PassportDetail {
     public void setPassportno(String passportno) {
         this.passportno = passportno;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "PassportDetail{" + "id=" + id + ", passportno=" + passportno + '}';
+    }
+ 
 }

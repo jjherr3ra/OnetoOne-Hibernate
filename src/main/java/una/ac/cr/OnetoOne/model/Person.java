@@ -10,12 +10,13 @@ package una.ac.cr.OnetoOne.model;
  * @author MACJuanJara
  */
 
-import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -28,21 +29,19 @@ public class Person {
     private long id;
     @Column(name = "name")
     private String name;
-    @Column(name = "passport_detail_id")
-    private int passport_detail_id;
+    @JoinColumn(name = "passport_detail_id")
+    @OneToOne
+    private PassportDetail passportno;
 
-    public Person(long id, String name, int passport_detail_id) {
+    public Person(long id, String name, PassportDetail passportno) {
         this.id = id;
         this.name = name;
-        this.passport_detail_id = passport_detail_id;
+        this.passportno = passportno;
     }
 
     public Person() {
-        this.id = 0;
-        this.name = "";
-        this.passport_detail_id = 0;
+       
     }
-    
 
     public long getId() {
         return id;
@@ -60,13 +59,18 @@ public class Person {
         this.name = name;
     }
 
-    public int getPassport_detail_id() {
-        return passport_detail_id;
+
+    public PassportDetail getPassportno() {
+        return passportno;
     }
 
-    public void setPassport_detail_id(int passport_detail_id) {
-        this.passport_detail_id = passport_detail_id;
+    public void setPassportno(PassportDetail passportno) {
+        this.passportno = passportno;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "Person{" + "id=" + id + ", name=" + name + ", passport_detail="  + passportno.getPassportno() + '}';
+    }
+
 }
