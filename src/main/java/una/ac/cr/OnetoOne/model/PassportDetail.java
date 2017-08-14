@@ -14,8 +14,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
+import javax.persistence.JoinColumn;
 
 
 @Entity
@@ -26,9 +27,9 @@ public class PassportDetail {
     @Column
     @GeneratedValue(strategy = IDENTITY)
     private long id;
-    
     @Column(name = "passportno")
     private String passportno;
+   
 
     public PassportDetail(long id, String passportno) {
         this.id = id;
@@ -38,6 +39,8 @@ public class PassportDetail {
     public PassportDetail() {
        
     }
+
+   
  
     
     public long getId() {
@@ -56,6 +59,8 @@ public class PassportDetail {
         this.passportno = passportno;
     }
 
+  
+    
     @Override
     public String toString() {
         return "PassportDetail{" + "id=" + id + ", passportno=" + passportno + '}';
